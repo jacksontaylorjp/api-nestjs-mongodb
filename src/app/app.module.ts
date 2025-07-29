@@ -3,7 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { ItemModule } from './item/item.module';
+import { ItemModule } from 'src/item/item.module';
 
 @Module({
   imports: [
@@ -15,7 +15,8 @@ import { ItemModule } from './item/item.module';
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => ({
-        uri: configService.get<string>('MONGO_URI'),
+        uri: configService.get<string>('MONGO_URI_ATLAS'),
+        dbName: configService.get<string>('DB_ATLAS'),
       }),
     }),
 
