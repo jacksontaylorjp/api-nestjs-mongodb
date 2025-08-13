@@ -1,13 +1,14 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { Item } from './item.schema';
 import { ItemService } from './item.service';
+import { CreateItemDto } from './item.dto';
 
 @Controller('item')
 export class ItemController {
     constructor(private readonly itemService: ItemService) { }
 
     @Post()
-    create(@Body() data: Item) {
+    create(@Body() data: CreateItemDto) {
         return this.itemService.create(data);
     }
 
