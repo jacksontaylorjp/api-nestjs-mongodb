@@ -4,11 +4,12 @@ import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ItemModule } from 'src/item/item.module';
+import { UserModule } from 'src/user/user.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      isGlobal: true, 
+      isGlobal: true,
     }),
 
     MongooseModule.forRootAsync({
@@ -21,8 +22,9 @@ import { ItemModule } from 'src/item/item.module';
     }),
 
     ItemModule,
+    UserModule
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }
